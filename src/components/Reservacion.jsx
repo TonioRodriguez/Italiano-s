@@ -1,10 +1,11 @@
-import React, {useState, useEffect,} from 'react';
+import React from 'react';
+import { useState, useEffect } from 'react';
 import {onSnapshot, collection, addDoc, deleteDoc, doc} from 'firebase/firestore';
-import {db} from './firebase.js';
-import './App.css';
-import {TextField} from '@mui/material'
+import {db} from '../firebase';
+import {TextField} from '@mui/material';
+import ResponsiveAppBar from './Nav'
 
-const App = () => {
+const Reservacion = () => {
   const [clientes, setClientes] = useState([])
   const [form, setForm] = useState({})
    const getData = () => {
@@ -46,6 +47,7 @@ const deleteElement = async (id) => {
     
     <div className="App">
       <header className='App-header'>
+        <ResponsiveAppBar />
       <h1>
           Firebase app
         </h1>
@@ -79,4 +81,4 @@ const deleteElement = async (id) => {
   );
 }
 
-export default App;
+export default Reservacion
