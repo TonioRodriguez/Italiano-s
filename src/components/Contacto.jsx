@@ -6,16 +6,37 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
+import koi from "../assets/images/koi.png"
 
 const Contacto = () => {
   return (
     <div>
       <ResponsiveAppBar />
-      <br />
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          item
+          xs ={12}
+        >
+
+          <img src ={koi} alt="contactanos!!">
+          </img>
+          
+        </Grid>
+      </Grid>
+      
       <br />
       <React.Fragment>
         <CssBaseline />
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <Box
             component="form"
             sx={{
