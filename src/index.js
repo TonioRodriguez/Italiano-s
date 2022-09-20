@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Routes, Route } from "react-router-dom";
-import './index.css';
 import Home from './components/Home';
-import Reservacion from './components/Reservacion';
+import Reserva from './components/Reserva';
 import Contacto from './components/Contacto';
 import Menu from './components/Menu';
 
@@ -14,7 +13,7 @@ root.render(
       <Routes>
         <Route path='/home' element={<Home />} />
         <Route path='/' element={<Home />} />
-        <Route path='/reservacion' element={<Reservacion />} />
+        <Route path='/reservacion' element={<Reserva />} />
         <Route path='/contacto' element={<Contacto />} />
         <Route path='/menu' element={<Menu />} />
       </Routes>

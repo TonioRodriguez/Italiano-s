@@ -1,30 +1,36 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import ResponsiveAppBar from './Nav';
-import home1 from "../assets/images/home1.jpg"
-import SwipeableTextMobileStepper from './carru';
+import home1 from "../assets/images/home1.jpg";
+import Carousel from "./Carousel"
+
+
 
 const home = () => {
-  return (
-    <>
-    <ResponsiveAppBar />
 
-    <Grid container
-      direction="row"
-      justifyContent="center"
-      alignItems="center" >
+  return (
+    <div>
+      <ResponsiveAppBar />
+
       <Grid container
         direction="row"
         justifyContent="center"
-        alignItems="center"
-        item xs={12}>
-        {<img src={home1} alt="Italiano's"/>}
+        alignItems="center" >
+        <Grid container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          item xs={12}>
+          {<img src={home1} alt="Italiano's"/>}
+        </Grid>
       </Grid>
-    </Grid>
 
-    <SwipeableTextMobileStepper />
-    </>
+      <br />
+      <br />
+
+      <Carousel /> 
+    </div>
   )
-}
-
+  }
+  
 export default home

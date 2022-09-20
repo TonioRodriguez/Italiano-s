@@ -1,15 +1,15 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {onSnapshot, collection, addDoc, deleteDoc, doc} from 'firebase/firestore';
-import {db} from '../firebase';
-import {TextField} from '@mui/material';
+import {db} from '../firebase.js';
 import ResponsiveAppBar from './Nav'
 
 const Reservacion = () => {
   const [clientes, setClientes] = useState([])
   const [form, setForm] = useState({})
+
    const getData = () => {
-    const clientesArr = []
+    const clientesArr = [];
+
     onSnapshot(collection(db, 'clientes'), (snapshot) =>{
       snapshot.docs.forEach((doc) => {
         clientesArr.push({
@@ -17,11 +17,12 @@ const Reservacion = () => {
           id: doc.id
         })
         setClientes(clientesArr)
+        console.log(doc.data())
       })
     })
   }
 
-const handleChange = (ev) => {
+  const handleChange = (ev) => {
     setForm({
       ...form,
       [ev.name]: ev.value
@@ -38,7 +39,6 @@ const deleteElement = async (id) => {
   await deleteDoc(doc(db, 'clientes', id))
   getData()
 }
-
   useEffect( () =>{
     getData()
   }, [])
@@ -48,20 +48,14 @@ const deleteElement = async (id) => {
     <div className="App">
       <header className='App-header'>
         <ResponsiveAppBar />
-      <h1>
+        <h1>
           Firebase app
         </h1>
         <div>
-          <TextField
-            id="outlined-name"
-            label="Name"
-            value= ''
-            onChange={handleChange}
-          />
           <input type='text' name='nombre' placeholder='Nombre' onChange= {(e) => handleChange(e.target)}/>
           <input type='text' name='mesa' placeholder='Mesa' onChange = {(e) => handleChange(e.target)}/>
           <input type='date' name='fecha' placeholder='Fecha' onChange = {(e) => handleChange(e.target)}/>
-          <button onClick={handleClick}>Guardar</button>
+          <button onClick={() => handleClick()}>Guardar</button>
         </div>
         <div>
           {
